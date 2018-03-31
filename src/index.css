@@ -1,6 +1,21 @@
+html {
+  font-size: 1em;
+  overflow: auto;
+}
+
 body {
   margin: 0;
-  /*padding: 0;*/
-  padding-top: 50px;
-  font-family: sans-serif;
+  padding: 20px;
+  font-size: 100%;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #efefef;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+.logo-link {
+  position: relative;
 }

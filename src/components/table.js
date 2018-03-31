@@ -13,8 +13,12 @@ class LintersTable extends Component {
   }
 
   handleClick(e) {
-    this.setState({sortType: e.target.name});
-    this.setState({sortReverse: !this.state.sortReverse});
+    if (e.target.name !== this.state.sortType){
+      this.setState({sortType: e.target.name});
+      this.setState({sortReverse: false});
+    } else {
+      this.setState({sortReverse: !this.state.sortReverse});
+    }
   }
 
   render() {

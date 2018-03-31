@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { loadJSON } from '../utils/services';
-import Search from './search';
+import Header from './header';
 import LintersTable from './table';
 
 class App extends Component {
@@ -59,7 +59,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Search/>
+        <Header/>
         <LintersTable data={this.state}/>
         <div>
           <h4>References</h4>
