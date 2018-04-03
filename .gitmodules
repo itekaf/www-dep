@@ -1,3 +1,3 @@
 [submodule "public/assets"]
 	path = public/assets
-	url = https://github.com/repometric/assets
+	url = https://github.com/repometric/assets.git
