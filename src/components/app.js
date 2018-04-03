@@ -10,17 +10,6 @@ class App extends Component {
     this.state = {
       linters: [],
       licenses: [],
-      references: [
-        "https://samate.nist.gov/index.php/Source_Code_Security_Analyzers.html",
-        "https://security.web.cern.ch/security/recommendations/en/code_tools.shtml",
-        "http://spinroot.com/static/",
-        "https://en.wikipedia.org/wiki/List_of_tools_for_static_code_analysis",
-        "http://www.dwheeler.com/flawfinder/",
-        "http://www.cert.org/secure-coding/tools/index.cfm",
-        "https://github.com/exakat/php-static-analysis-tools",
-        "http://www.codeanalysistools.com",
-        "https://github.com/caramelomartins/awesome-linters"
-      ]
     };
   }
 
@@ -50,23 +39,10 @@ class App extends Component {
   }
 
   render() {
-
-    const references = this.state.references.map((item, index) => {
-      return (
-        <li key={index}><a href={item}>{item}</a></li>
-      );
-    });
-
     return (
       <div className="App">
         <Header/>
         <LintersTable data={this.state}/>
-        <div>
-          <h4>References</h4>
-          <ul>
-            {references}
-          </ul>
-        </div>
       </div>
     );
   }

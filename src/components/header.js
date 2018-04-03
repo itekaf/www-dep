@@ -4,7 +4,7 @@ class Header extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { logo: 'assets/raster/rm-logo-border.png', value: '' };
+    this.state = { logo: 'assets/raster/lh-logo-border.png', value: '' };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,7 +23,7 @@ class Header extends Component {
       <header className="container-fluid">
         <div className="row">
           <div className="col-sm-1 hidden-xs">
-            <a href="https://repometric.com" title="repometric" className="logo-link">
+            <a href="https://hub.repometric.com" title="linterhub" className="logo-link">
               <img src={this.state.logo} className="logo" alt=" "/>
             </a>
           </div>
