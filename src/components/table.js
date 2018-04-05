@@ -42,28 +42,28 @@ class LintersTable extends Component {
           <thead>
           <tr>
             <td>
-              <a href="#" name="name" onClick={this.handleClick}>
+              <a href="" name="name" onClick={this.handleClick}>
                 Name
                 <span className={this.state.sortType === 'name' && !this.state.sortReverse ? "fa fa-caret-down" : "hidden"}/>
                 <span className={this.state.sortType === 'name' && this.state.sortReverse ? "fa fa-caret-up" : "hidden"}/>
               </a>
             </td>
             <td className="hidden-xs">
-              <a href="#" name="description" onClick={this.handleClick}>
+              <a href="" name="description" onClick={this.handleClick}>
                 Description
                 <span className={this.state.sortType === 'description' && !this.state.sortReverse ? "fa fa-caret-down" : "hidden"}/>
                 <span className={this.state.sortType === 'description' && this.state.sortReverse ? "fa fa-caret-up" : "hidden"}/>
               </a>
             </td>
             <td>
-              <a href="#" name="languages" onClick={this.handleClick}>
+              <a href="" name="languages" onClick={this.handleClick}>
                 Languages
                 <span className={this.state.sortType === 'languages' && !this.state.sortReverse ? "fa fa-caret-down" : "hidden"}/>
                 <span className={this.state.sortType === 'languages' && this.state.sortReverse ? "fa fa-caret-up" : "hidden"}/>
               </a>
             </td>
             <td className="hidden-xs">
-              <a href="#" name="license" onClick={this.handleClick}>
+              <a href="" name="license" onClick={this.handleClick}>
                 License
                 <span className={this.state.sortType === 'license' && !this.state.sortReverse ? "fa fa-caret-down" : "hidden"}/>
                 <span className={this.state.sortType === 'license' && this.state.sortReverse ? "fa fa-caret-up" : "hidden"}/>
