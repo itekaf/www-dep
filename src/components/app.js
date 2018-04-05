@@ -8,30 +8,29 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      linters: [],
-      licenses: [],
+      linters: []
     };
   }
 
   componentDidMount() {
-    this.getLinters("linters.json");
+    // TODO: Move to config, probably change the structure
+    const url = "https://repometric.github.io/linterhub/engine/bundle.json";
+    this.getLinters(url);
   }
 
   getLinters(url) {
     loadJSON(url)
       .then((data) => {
-        this.setState({licenses: data.licenses});
-        this.setState({linters: data.linters.map(function (item) {
+        let names = Object.keys(data).filter(k => k !== "$schema");
+        this.setState({licenses: []});
+        this.setState({linters: names.map(function (item) {
+            const linter = data[item];
             return {
-              name: item.name,
-              description: item.description,
-              url: item.url,
-              platform: item.platform,
-              licenses: item.license.split(','),
-              licenseUnknown: item.license.indexOf('Unknown') >= 0,
-              languages: item.languages.split(','),
-              rm_docker: item.platform === "TODO",
-              rm_cli: false
+              name: item,
+              description: linter.meta.description,
+              url: linter.meta.url,
+              license: linter.meta.license,
+              languages: linter.meta.languages
             }
           })});
         this.forceUpdate();

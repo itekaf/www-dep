@@ -1,7 +1,8 @@
 {
-  "name": "landing",
+  "name": "hub.repometric.com",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://hub.repometric.com",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",

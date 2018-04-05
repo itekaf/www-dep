@@ -30,22 +30,7 @@ class LintersTable extends Component {
           <td><a href={item.url}>{item.name}</a></td>
           <td className="hidden-xs">{item.description}</td>
           <td>{item.languages.join(", ")}</td>
-          <td className={item.rm_docker ? "danger": ""}>
-            <a href={"dockers/alpine/" + item.name + "/Dockerfile"}>{item.rm_docker ? "No" : "Yes"}</a>
-          </td>
-          <td className={item.licenseUnknown ? "danger hidden-xs" : "hidden-xs"}>
-            {
-              item.licenses.map((item, index) => {
-                return (
-                  <span key={index}>
-                    <a href={item}>{item}</a>
-                    {/*{$last ? '' : ', '}*/}
-                  </span>
-                );
-              })
-            }
-
-          </td>
+          <td>{item.license}</td>
         </tr>
       );
     });
@@ -75,13 +60,6 @@ class LintersTable extends Component {
                 Languages
                 <span className={this.state.sortType === 'languages' && !this.state.sortReverse ? "fa fa-caret-down" : "hidden"}/>
                 <span className={this.state.sortType === 'languages' && this.state.sortReverse ? "fa fa-caret-up" : "hidden"}/>
-              </a>
-            </td>
-            <td>
-              <a href="#" name="platform" onClick={this.handleClick}>
-                Dockerfile
-                <span className={this.state.sortType === 'platform' && !this.state.sortReverse ? "fa fa-caret-down" : "hidden"}/>
-                <span className={this.state.sortType === 'platform' && this.state.sortReverse ? "fa fa-caret-up" : "hidden"}/>
               </a>
             </td>
             <td className="hidden-xs">
