@@ -332,9 +332,12 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     // Copy files plugin
     new CopyWebpackPlugin([{ 
-      from: 'ext/assets/raster/lh-logo-border.png',
-      to: 'assets/raster/lh-logo-border.png'
-    }]),
+        from: 'ext/assets/raster/lh-logo-border.png',
+        to: 'assets/raster/lh-logo-border.png'
+      }, {
+        from: 'CNAME'
+      }
+    ]),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
