@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import _ from "lodash";
+
 
 class LintersTable extends Component {
 
@@ -6,25 +8,39 @@ class LintersTable extends Component {
     super(props);
     this.state = {
       sortType: 'name',
-      sortReverse: false,
+      sortDirection: 'desc',
     };
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(e) {
-    if (e.target.name !== this.state.sortType){
+    if (e.target.name !== this.state.sortType) {
       this.setState({sortType: e.target.name});
-      this.setState({sortReverse: false});
+      this.setState({sortDirection: 'desc'});
     } else {
-      this.setState({sortReverse: !this.state.sortReverse});
+      this.setState({sortDirection: this.state.sortDirection === 'desc' ? 'asc' : 'desc'});
     }
   }
 
   render() {
-    let data = this.props.data;
+    const columns =  ['name', 'description', 'languages', 'license'];
+    const header = columns.map((item, index) => {
+      return (
+        <td key={index}>
+          <a href="#" name={item} onClick={this.handleClick}>
+            {item[0].toUpperCase() +  item.substr(1)}
+            <span className={this.state.sortType === item && this.state.sortDirection === 'desc' ? "fa fa-caret-down" : "hidden"}/>
+            <span className={this.state.sortType === item && this.state.sortDirection === 'asc' ? "fa fa-caret-up" : "hidden"}/>
+          </a>
+        </td>
+      );
+    });
 
-    const content = data.linters.map((item, index) => {
+    const data = this.props.data;
+    const sortedLinters = _.orderBy(
+      data.linters, [this.state.sortType], [this.state.sortDirection]);
+    const content = sortedLinters.map((item, index) => {
       return (
         <tr key={index}>
           <td><a href={item.url}>{item.name}</a></td>
@@ -39,41 +55,8 @@ class LintersTable extends Component {
       <div>
         <h4>Showing {data.linters.length} Linters.</h4>
         <table className="table table-bordered table-striped">
-          <thead>
-          <tr>
-            <td>
-              <a href="" name="name" onClick={this.handleClick}>
-                Name
-                <span className={this.state.sortType === 'name' && !this.state.sortReverse ? "fa fa-caret-down" : "hidden"}/>
-                <span className={this.state.sortType === 'name' && this.state.sortReverse ? "fa fa-caret-up" : "hidden"}/>
-              </a>
-            </td>
-            <td className="hidden-xs">
-              <a href="" name="description" onClick={this.handleClick}>
-                Description
-                <span className={this.state.sortType === 'description' && !this.state.sortReverse ? "fa fa-caret-down" : "hidden"}/>
-                <span className={this.state.sortType === 'description' && this.state.sortReverse ? "fa fa-caret-up" : "hidden"}/>
-              </a>
-            </td>
-            <td>
-              <a href="" name="languages" onClick={this.handleClick}>
-                Languages
-                <span className={this.state.sortType === 'languages' && !this.state.sortReverse ? "fa fa-caret-down" : "hidden"}/>
-                <span className={this.state.sortType === 'languages' && this.state.sortReverse ? "fa fa-caret-up" : "hidden"}/>
-              </a>
-            </td>
-            <td className="hidden-xs">
-              <a href="" name="license" onClick={this.handleClick}>
-                License
-                <span className={this.state.sortType === 'license' && !this.state.sortReverse ? "fa fa-caret-down" : "hidden"}/>
-                <span className={this.state.sortType === 'license' && this.state.sortReverse ? "fa fa-caret-up" : "hidden"}/>
-              </a>
-            </td>
-          </tr>
-          </thead>
-          <tbody>
-          {content}
-          </tbody>
+          <thead><tr>{header}</tr></thead>
+          <tbody>{content}</tbody>
         </table>
       </div>
     );

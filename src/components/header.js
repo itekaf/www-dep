@@ -15,7 +15,8 @@ class Header extends Component {
   }
 
   handleSubmit(e) {
-    console.log('Submitting: ' + e.target);
+    console.log('Submitting: ' + this.state.value);
+    this.setState({value: ''});
   }
 
   render() {
@@ -28,7 +29,7 @@ class Header extends Component {
             </a>
           </div>
           <div className="col-lg-11 col-md-11 col-sm-11 col-xs-12">
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <div className="input-group">
                   <div className="input-group-addon">
@@ -38,7 +39,8 @@ class Header extends Component {
                          className="form-control"
                          placeholder="Search"
                          value={this.state.value}
-                         onChange={this.handleChange}/>
+                         onChange={this.handleChange}
+                  />
                 </div>
               </div>
             </form>
