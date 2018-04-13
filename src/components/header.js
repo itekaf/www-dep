@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { setFilter } from '../redux/actions'
 
 class Header extends Component {
 
@@ -15,7 +17,7 @@ class Header extends Component {
   }
 
   handleSubmit(e) {
-    console.log('Submitting: ' + this.state.value);
+    this.props.setFilter(this.state.value);
     this.setState({value: ''});
   }
 
@@ -51,4 +53,4 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default connect(null, { setFilter })(Header);

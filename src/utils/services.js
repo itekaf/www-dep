@@ -1,7 +1,4 @@
-export const loadJSON = (url) => {
-  return fetch(url)
-    .then(response => response.json())
-    .catch(err => {
-      console.error("Error: " + err.message())
-    })
-};
+export function loadJson(url) {
+  return fetch(url, { method: 'GET'})
+    .then(response => Promise.all([response, response.json()]));
+}

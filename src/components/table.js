@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import _ from "lodash";
 
-
 class LintersTable extends Component {
 
   constructor(props) {
@@ -28,7 +27,7 @@ class LintersTable extends Component {
     const header = columns.map((item, index) => {
       return (
         <td key={index}>
-          <a href="#" name={item} onClick={this.handleClick}>
+          <a href="#!" name={item} onClick={this.handleClick}>
             {item[0].toUpperCase() +  item.substr(1)}
             <span className={this.state.sortType === item && this.state.sortDirection === 'desc' ? "fa fa-caret-down" : "hidden"}/>
             <span className={this.state.sortType === item && this.state.sortDirection === 'asc' ? "fa fa-caret-up" : "hidden"}/>
@@ -37,9 +36,13 @@ class LintersTable extends Component {
       );
     });
 
-    const data = this.props.data;
+    const filteredLinters = _.filter(this.props.data, (linter) => {
+      return linter.description.includes(this.props.search)
+    });
+
     const sortedLinters = _.orderBy(
-      data.linters, [this.state.sortType], [this.state.sortDirection]);
+      filteredLinters, [this.state.sortType], [this.state.sortDirection]);
+
     const content = sortedLinters.map((item, index) => {
       return (
         <tr key={index}>
@@ -53,7 +56,8 @@ class LintersTable extends Component {
 
     return (
       <div>
-        <h4>Showing {data.linters.length} Linters.</h4>
+        <h4>Showing {filteredLinters.length} Linter
+          <span className={filteredLinters.length === 1 ? 'hidden' : ''}>s</span>.</h4>
         <table className="table table-bordered table-striped">
           <thead><tr>{header}</tr></thead>
           <tbody>{content}</tbody>
