@@ -30,7 +30,7 @@ class Header extends Component {
               <img src={this.state.logo} className="logo" alt=" "/>
             </a>
           </div>
-          <div className="col-lg-11 col-md-11 col-sm-11 col-xs-12">
+          <div className="col-lg-8 col-md-8 col-sm-8 col-xs-9">
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <div className="input-group">
@@ -45,6 +45,11 @@ class Header extends Component {
                   />
                 </div>
               </div>
+            </form>
+          </div>
+          <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <form action="https://github.com/repometric/linterhub/issues/new?template=engine.md">
+              <input type="submit" value="add new linter" />
             </form>
           </div>
         </div>
