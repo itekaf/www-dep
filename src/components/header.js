@@ -48,9 +48,7 @@ class Header extends Component {
             </form>
           </div>
           <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <form action="https://github.com/repometric/linterhub/issues/new?template=engine.md">
-              <input type="submit" value="add new linter" />
-            </form>
+            <a className="button" href="https://github.com/repometric/linterhub/issues/new?template=engine.md">add new linter</a>
           </div>
         </div>
       </header>
