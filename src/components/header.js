@@ -17,6 +17,7 @@ class Header extends Component {
   }
 
   handleSubmit(e) {
+    e.preventDefault();
     this.props.setFilter(this.state.value);
     this.setState({value: ''});
   }
