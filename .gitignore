@@ -5,7 +5,6 @@
 
 # dependencies
 /node_modules
-/public/assets
 
 # testing
 /coverage
