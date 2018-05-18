@@ -31,7 +31,7 @@ export function getLinters() {
 
   return (dispatch) => {
     dispatch(fetchLintersRequest());
-    const URL = "https://repometric.github.io/linterhub/engine/bundle.json";
+    const URL = "https://catalog.linterhub.com/bundle.json";
     return loadJson(URL)
       .then(([response, json]) => {
         if (response.status === 200) {

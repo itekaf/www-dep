@@ -27,7 +27,7 @@ class Header extends Component {
       <header className="container-fluid">
         <div className="row">
           <div className="col-sm-1 hidden-xs">
-            <a href="https://hub.repometric.com" title="linterhub" className="logo-link">
+            <a href="https://linterhub.com" title="linterhub" className="logo-link">
               <img src={this.state.logo} className="logo" alt=" "/>
             </a>
           </div>
@@ -49,7 +49,7 @@ class Header extends Component {
             </form>
           </div>
           <div className="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <a className="button" href="https://github.com/repometric/linterhub/issues/new?template=engine.md">add new linter</a>
+            <a className="button" href="https://github.com/linterhub/catalog/issues/new?template=engine.md">add new linter</a>
           </div>
         </div>
       </header>
