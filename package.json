@@ -1,6 +1,6 @@
 {
     "name": "@linterhub/www",
-    "private":  true,
+    "private": true,
     "version": "0.1.0",
     "homepage": "https://linterhub.com",
     "dependencies": {
@@ -39,6 +39,7 @@
         "react-dev-utils": "^5.0.0",
         "react-dom": "^16.2.0",
         "react-redux": "^5.0.7",
+        "react-tabs": "^2.2.2",
         "redux": "^3.7.2",
         "redux-thunk": "^2.2.0",
         "style-loader": "0.19.0",
