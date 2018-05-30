@@ -8,25 +8,25 @@ class LintersTable extends Component {
     this.state = {
       sortType: 'name',
       sortDirection: 'desc', 
-      value: ''
+      searchText: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSort = this.handleSort.bind(this);
   }
 
   handleChange(e) {
     this.props.setFilter(e.target.value);
-    this.setState({value: e.target.value});
+    this.setState({searchText: e.target.value});
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.setFilter(this.state.value);
+    this.props.setFilter(this.state.searchText);
   }
 
-  handleClick(e) {
+  handleSort(e) {
     if (e.target.name !== this.state.sortType) {
       this.setState({sortType: e.target.name});
       this.setState({sortDirection: 'desc'});
@@ -36,39 +36,39 @@ class LintersTable extends Component {
   }
 
   render() {
-    const columns = [
-      {
-        "name": "name",
-        "class": "th-small cell100"
-      },
-      {
-        "name": "description",
-        "class": "th-big cell100",
-      },
-      {
-        "name": "languages",
-        "class": "th-big hidden-xm cell100",
-      },
-      {
-        "name": "license",
-        "class": "th-small hidden-lg cell100",
-      }
-    ];
 
-    const header = columns.map((item, index) => {
-      return (
-        <th key={index} className={item.class}>
-            <a href="#!" name={item.name} onClick={this.handleClick}>
-            {item.name}
-            {sortSpan(this.state, item.name)}
+    const header = 
+     <tr>
+        <th className="th-small cell100">
+          <a href="#!" name="name" onClick={this.handleSort}>
+            name
+            {sortSpan(this.state, "name")}
           </a>
         </th>
-      );
-    })
+        <th className="th-big cell100">
+        <a href="#!" name="description" onClick={this.handleSort}>
+            description
+            {sortSpan(this.state, "description")}
+          </a>
+        </th>
+        <th className="th-big hidden-xm cell100">
+          <a href="#!" name="languages" onClick={this.handleSort}>
+            languages
+            {sortSpan(this.state, "languages")}
+          </a>
+        </th>
+        <th className="th-small hidden-lg cell100">
+          <a href="#!" name="license" onClick={this.handleSort}>
+            license
+            {sortSpan(this.state, "license")}
+          </a>
+        </th>
+      </tr>
   
     const filteredLinters = _.filter(this.props.data, (linter) => {
-
+        
         var searchData = this.props.search;
+        this.setState({searchText : searchData !== "" ? searchData : this.state.searchText})
 
         return _.includes(linter.description, searchData) || 
         _.includes(linter.languages, searchData) || 
@@ -76,7 +76,7 @@ class LintersTable extends Component {
         _.includes(linter.name, searchData);
     });
 
-
+    
     const sortedLinters = _.orderBy(
       filteredLinters, [this.state.sortType], [this.state.sortDirection]);
 
@@ -101,7 +101,7 @@ class LintersTable extends Component {
             <input type="text"
                     className="form-control"
                     placeholder="Search by me"
-                    value={this.state.value}
+                    value={this.state.searchText}
                     onChange={this.handleChange}
             />
           </div>
@@ -112,10 +112,10 @@ class LintersTable extends Component {
     return (
       <div className="tab-content">
         {search}
-        <div className="table100 ver3 m-b-110">
+        <div className="package-table m-b-110">
           <table className="table table-bordered table-striped">
-            <thead className="table100-head"><tr>{header}</tr></thead>
-            <tbody className="table100-body">{content}</tbody>
+            <thead className="package-table-head">{header}</thead>
+            <tbody className="package-table-body">{content}</tbody>
           </table>
         </div>
       </div>
@@ -127,14 +127,14 @@ function sortSpan(e, item) {
   if (item === e.sortType){
     switch(e.sortDirection){
       case 'asc': 
-        return <span className="fa fa-sort-alpha-down sort-icon"/>
+        return <span className="fontello-icon sort-icon">&#xf15d;</span>
       case 'desc':
-        return <span className="fa fa-sort-alpha-up sort-icon"/>
+        return <span className="fontello-icon sort-icon">&#xf15e;</span>
       default:
-        return <span className="fa fa-sort sort-icon"/>
+        return <span className="fontello-icon sort-icon">&#xf0dc;</span>
     }
   }else {
-    return <span className="fa fa-sort sort-icon"/>
+    return <span className="fontello-icon sort-icon">&#xf0dc;</span>
   }
 }
 

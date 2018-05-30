@@ -18,7 +18,7 @@ class Main extends Component {
                         <a href="https://linterhub.com" title="linterhub" >
                           <div className="container-flex">
                             <div className="header-name">
-                              <h1>Linterhub</h1>
+                              <h1>linterhub</h1>
                             </div>
                           </div>
                         </a>
