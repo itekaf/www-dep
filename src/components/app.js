@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Header from './header'
-import LintersTable from './table'
+import MainPage from './main.js'
 import { connect } from "react-redux";
 import { getLinters, setFilter } from "../redux/actions";
 
@@ -13,8 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header setFilter={this.props.setFilter}/>
-        <LintersTable data={this.props.linters} search={this.props.search}/>
+         <MainPage data={this.props.linters} search={this.props.search} setFilter={this.props.setFilter} />
       </div>
     );
   }
