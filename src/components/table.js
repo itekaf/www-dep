@@ -67,8 +67,7 @@ class LintersTable extends Component {
   
     const filteredLinters = _.filter(this.props.data, (linter) => {
         
-        var searchData = this.props.search;
-        this.setState({searchText : searchData !== "" ? searchData : this.state.searchText})
+        const searchData = this.props.search;
 
         return _.includes(linter.description, searchData) || 
         _.includes(linter.languages, searchData) || 
