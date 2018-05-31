@@ -8,7 +8,7 @@ class LintersTable extends Component {
     this.state = {
       sortType: 'name',
       sortDirection: 'desc', 
-      searchText: ''
+      searchText: this.props.search !== "" ? this.props.search : ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
